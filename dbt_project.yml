@@ -1,0 +1,37 @@
+# dbt project configuration for Global Employee Analytics
+# profile: employee_analytics | version: 1.0.0
+name: 'employee_analytics'
+version: '1.0.0'
+profile: 'employee_analytics'
+
+# project component paths
+model-paths: ["models"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+# directories removed by dbt clean
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# seed tables route to the SEEDS schema
+seeds:
+  employee_analytics:
+    +schema: SEEDS
+
+# persist model descriptions as Snowflake COMMENT on tables and views
+models:
+  employee_analytics:
+    +persist_docs:
+      relation: true
+      columns: true
+    staging:
+      +materialized: view
+      +schema: STAGING
+    intermediate:
+      +materialized: view
+      +schema: INTERMEDIATE
+    marts:
+      +materialized: table
+      +schema: MARTS

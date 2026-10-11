@@ -1,0 +1,13 @@
+# dbt profile for Snowflake-native deployment — auth handled by Snowflake session
+employee_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ""
+      user: ""
+      database: EMPLOYEE_ANALYTICS
+      warehouse: COMPUTE_WH
+      schema: SEEDS
+      role: ACCOUNTADMIN
+      threads: 4
