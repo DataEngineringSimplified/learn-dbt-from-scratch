@@ -1,0 +1,11 @@
+employee_id,first_name,last_name,work_email,country_code,department_id,hire_date,employment_status,source_updated_at
+E001,Ava,Miller,ava.miller@example.us,US,US-ENG,2022-04-04,ACTIVE,2026-05-31
+E002,Liam,Johnson,liam.johnson@example.us,US,US-HR,2022-07-06,ACTIVE,2026-05-31
+E003,Sophia,Brown,sophia.brown@example.us,US,US-FIN,2022-10-07,ACTIVE,2026-05-31
+E004,Noah,Davis,noah.davis@example.us,US,US-ENG,2023-01-08,ACTIVE,2026-05-31
+E005,Isabella,Wilson,isabella.wilson@example.us,US,US-HR,2023-04-11,ACTIVE,2026-05-31
+E006,Ethan,Moore,ethan.moore@example.us,US,US-FIN,2023-07-13,ACTIVE,2026-05-31
+E007,Mia,Taylor,mia.taylor@example.us,US,US-ENG,2023-10-14,ACTIVE,2026-05-31
+E008,Lucas,Anderson,lucas.anderson@example.us,US,US-HR,2024-01-15,ACTIVE,2026-05-31
+E009,Amelia,Thomas,amelia.thomas@example.us,US,US-FIN,2024-04-17,ACTIVE,2026-05-31
+E010,Oliver,Jackson,oliver.jackson@example.us,US,US-ENG,2024-07-19,ACTIVE,2026-05-31

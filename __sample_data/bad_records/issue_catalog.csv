@@ -1,0 +1,12 @@
+file,csv_row_number_including_header,record_key,intended_problem,suggested_test,teaching_note
+employees_bad.csv,2,E001,Duplicate employee ID,unique employee_id,Show duplicate unique key failure
+employees_bad.csv,3,E999,Blank work email,not_null work_email,Blank CSV field must be transformed to NULL before test
+employees_bad.csv,4,E998,Unknown department ID,relationships department_id → departments,Show referential integrity test
+employees_bad.csv,5,E997,Unknown country code,relationships country_code → country_mapping,Show reference mapping failure
+leave_bad.csv,2,L00001,Duplicate leave transaction ID,unique leave_id,Duplicate against clean leave_initial.csv
+leave_bad.csv,3,L99901,Missing employee reference,relationships employee_id → employees,Show orphan transaction
+leave_bad.csv,4,L99902,Unmapped leave code,"relationships (country,code) → mapping / singular test",Composite-key validation needs custom logic
+leave_bad.csv,5,L99903,Negative days_taken,singular test: days_taken > 0,Show a simple SQL test
+leave_bad.csv,6,L99904,Invalid date string,TRY_TO_DATE / staging data-quality test,Avoid hard CAST crashing the whole model
+leave_bad.csv,7,L99905,Blank employee ID,not_null employee_id,Convert blank CSV value into NULL
+leave_bad.csv,8,L99906,Employee/country mismatch,singular test comparing employee's country,E024 is India but leave event says Germany

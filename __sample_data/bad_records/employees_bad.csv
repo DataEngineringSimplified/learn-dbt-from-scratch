@@ -1,0 +1,5 @@
+employee_id,first_name,last_name,work_email,country_code,department_id,hire_date,employment_status,source_updated_at
+E001,Ava,Miller,ava.miller@example.us,US,US-ENG,2022-04-04,ACTIVE,2026-06-07
+E999,Bad,Null,,US,US-HR,2026-01-01,ACTIVE,2026-06-07
+E998,Bad,Dept,unknown@example.us,US,US-UNKNOWN,2026-01-01,ACTIVE,2026-06-07
+E997,Bad,Country,country@example.us,XX,XX-ENG,2026-01-01,ACTIVE,2026-06-07

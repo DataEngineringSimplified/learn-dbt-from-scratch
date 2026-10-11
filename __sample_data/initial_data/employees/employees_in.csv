@@ -1,0 +1,11 @@
+employee_id,first_name,last_name,work_email,country_code,department_id,hire_date,employment_status,source_updated_at
+E021,Aarav,Sharma,aarav.sharma@example.in,IN,IN-TECH,2022-07-27,ACTIVE,2026-05-31
+E022,Ananya,Iyer,ananya.iyer@example.in,IN,IN-PEOPLE,2022-10-28,ACTIVE,2026-05-31
+E023,Vivaan,Patel,vivaan.patel@example.in,IN,IN-ACCT,2023-01-29,ACTIVE,2026-05-31
+E024,Diya,Nair,diya.nair@example.in,IN,IN-TECH,2023-05-02,ACTIVE,2026-05-31
+E025,Aditya,Rao,aditya.rao@example.in,IN,IN-PEOPLE,2023-08-03,ACTIVE,2026-05-31
+E026,Ishita,Mehta,ishita.mehta@example.in,IN,IN-ACCT,2023-11-04,ACTIVE,2026-05-31
+E027,Arjun,Gupta,arjun.gupta@example.in,IN,IN-TECH,2024-02-05,ACTIVE,2026-05-31
+E028,Saanvi,Reddy,saanvi.reddy@example.in,IN,IN-PEOPLE,2024-05-08,ACTIVE,2026-05-31
+E029,Kabir,Singh,kabir.singh@example.in,IN,IN-ACCT,2024-08-09,ACTIVE,2026-05-31
+E030,Meera,Joshi,meera.joshi@example.in,IN,IN-TECH,2024-11-10,ACTIVE,2026-05-31

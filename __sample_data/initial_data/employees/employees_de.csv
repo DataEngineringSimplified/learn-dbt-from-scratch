@@ -1,0 +1,11 @@
+employee_id,first_name,last_name,work_email,country_code,department_id,hire_date,employment_status,source_updated_at
+E011,Emma,Schmidt,emma.schmidt@example.de,DE,DE-TECH,2022-05-31,ACTIVE,2026-05-31
+E012,Ben,Mueller,ben.mueller@example.de,DE,DE-PERS,2022-09-01,ACTIVE,2026-05-31
+E013,Mia,Weber,mia.weber@example.de,DE,DE-FIN,2022-12-03,ACTIVE,2026-05-31
+E014,Paul,Fischer,paul.fischer@example.de,DE,DE-TECH,2023-03-06,ACTIVE,2026-05-31
+E015,Hannah,Wagner,hannah.wagner@example.de,DE,DE-PERS,2023-06-07,ACTIVE,2026-05-31
+E016,Leon,Becker,leon.becker@example.de,DE,DE-FIN,2023-09-08,ACTIVE,2026-05-31
+E017,Lena,Hoffmann,lena.hoffmann@example.de,DE,DE-TECH,2023-12-10,ACTIVE,2026-05-31
+E018,Felix,Schulz,felix.schulz@example.de,DE,DE-PERS,2024-03-12,ACTIVE,2026-05-31
+E019,Clara,Koch,clara.koch@example.de,DE,DE-FIN,2024-06-13,ACTIVE,2026-05-31
+E020,Jonas,Richter,jonas.richter@example.de,DE,DE-TECH,2024-09-14,ACTIVE,2026-05-31

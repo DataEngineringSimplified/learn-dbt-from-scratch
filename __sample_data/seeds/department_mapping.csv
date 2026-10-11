@@ -1,0 +1,10 @@
+country_code,source_department_name,standard_department_name
+US,Engineering,Engineering
+US,Human Resources,Human Resources
+US,Finance,Finance
+DE,Technik,Engineering
+DE,Personalwesen,Human Resources
+DE,Finanzen,Finance
+IN,Technology,Engineering
+IN,People Operations,Human Resources
+IN,Accounts,Finance

@@ -1,0 +1,10 @@
+department_id,country_code,local_department_name,effective_from
+US-ENG,US,Engineering,2026-01-01
+US-HR,US,Human Resources,2026-01-01
+US-FIN,US,Finance,2026-01-01
+DE-TECH,DE,Technik,2026-01-01
+DE-PERS,DE,Personalwesen,2026-01-01
+DE-FIN,DE,Finanzen,2026-01-01
+IN-TECH,IN,Technology,2026-01-01
+IN-PEOPLE,IN,People Operations,2026-01-01
+IN-ACCT,IN,Accounts,2026-01-01
