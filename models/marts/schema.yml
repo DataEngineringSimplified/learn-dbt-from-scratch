@@ -1,0 +1,38 @@
+# data tests for analytics marts — referential integrity, uniqueness, not-null
+version: 2
+
+models:
+  - name: dim_employee
+    description: One row per employee with standardized department and country info.
+    columns:
+      - name: employee_id
+        tests:
+          - unique
+          - not_null
+      - name: department_id
+        tests:
+          - relationships:
+              to: ref('dim_department')
+              field: department_id
+
+  - name: dim_department
+    description: One row per country-specific department with standardized name.
+    columns:
+      - name: department_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_leave
+    description: One row per leave transaction with standardized leave type.
+    columns:
+      - name: leave_id
+        tests:
+          - unique
+          - not_null
+      - name: employee_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_employee')
+              field: employee_id

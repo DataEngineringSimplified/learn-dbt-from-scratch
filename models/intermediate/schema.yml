@@ -1,0 +1,9 @@
+# intermediate layer schema definitions and descriptions
+version: 2
+
+models:
+  - name: int_employees_standardized
+    description: Employees enriched with standardized department names, country names, and regions via seed lookups.
+
+  - name: int_leave_standardized
+    description: Leave events enriched with standardized leave types and paid/unpaid indicators via seed lookups.

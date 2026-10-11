@@ -1,0 +1,33 @@
+# staging layer schema definitions and descriptions
+version: 2
+
+sources:
+  - name: raw
+    database: EMPLOYEE_ANALYTICS
+    schema: RAW
+    tables:
+      - name: employees
+        description: Raw employee master data with personal info, department assignment, and hire details.
+      - name: departments
+        description: Raw department reference data with country-specific department names.
+      - name: leave_events
+        description: Raw leave transaction events with country-specific leave codes.
+
+models:
+  - name: stg_employees
+    description: Staged employee data — minimal transformation over the raw employees table.
+    columns:
+      - name: employee_id
+        description: Unique identifier for each employee.
+
+  - name: stg_departments
+    description: Staged department data — minimal transformation over the raw departments table.
+    columns:
+      - name: department_id
+        description: Unique identifier for each country-specific department.
+
+  - name: stg_leave_events
+    description: Staged leave events — minimal transformation over the raw leave transactions.
+    columns:
+      - name: leave_id
+        description: Unique identifier for each leave transaction.

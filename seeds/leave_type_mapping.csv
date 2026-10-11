@@ -1,0 +1,10 @@
+country_code,source_leave_code,standard_leave_type,is_paid
+US,PTO,Annual Leave,TRUE
+US,SICK,Sick Leave,TRUE
+US,UNPAID,Unpaid Leave,FALSE
+DE,URLAUB,Annual Leave,TRUE
+DE,KRANK,Sick Leave,TRUE
+DE,UNBEZAHLT,Unpaid Leave,FALSE
+IN,PL,Annual Leave,TRUE
+IN,SL,Sick Leave,TRUE
+IN,LOP,Unpaid Leave,FALSE
