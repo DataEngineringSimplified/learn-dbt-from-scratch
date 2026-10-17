@@ -103,7 +103,7 @@ COPY INTO EMPLOYEE_ANALYTICS.RAW.EMPLOYEES
     ON_ERROR = ABORT_STATEMENT;
 
 COPY INTO EMPLOYEE_ANALYTICS.RAW.DEPARTMENTS
-    FROM @SEMPLOYEE_ANALYTICS.RAW.TG_EMPLOYEES
+    FROM @EMPLOYEE_ANALYTICS.RAW.STG_EMPLOYEES
     FILE_FORMAT = (FORMAT_NAME = FF_EMPLOYEE_CSV)
     FILES = ('departments.csv')
     ON_ERROR = ABORT_STATEMENT;
@@ -130,12 +130,4 @@ SELECT 'LEAVE_EVENTS', COUNT(*) FROM EMPLOYEE_ANALYTICS.RAW.LEAVE_EVENTS;
 --     ON_ERROR = ABORT_STATEMENT;
 --
 -- SELECT COUNT(*) AS LEAVE_EVENT_ROWS_AFTER_DELTA FROM LEAVE_EVENTS;
---
--- NOTES:
--- - Do not load bad_records/ as part of the clean baseline.
--- - seeds/*.csv belong in your dbt project's seeds folder (dbt seed);
---   they are NOT Snowflake raw source CSVs.
--- - Snowflake COPY tracks files loaded into each table and may skip
---   already-loaded files on reruns. Do not set FORCE=TRUE casually.
--- - DDL is illustrative; adjust permissions/warehouse and source database
---   name to your account. Snowflake does not enforce ordinary PK/FK constraints.
+
