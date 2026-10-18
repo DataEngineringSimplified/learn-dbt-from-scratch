@@ -1,0 +1,39 @@
+Objective:
+Create a dbt project on Snowflake called "Modern Employee Analytics" that transforms raw employee, department, and leave data into analytics-ready dimension and fact tables. The dataset represents a global organization across three countries (US, Germany, India) with employees, departments, and leave transactions. The database (EMPLOYEE_ANALYTICS_V2) and schemas already exist in the Snowflake account. Profile the RAW tables first to understand the data shape, volumes, column types, and value distributions before building any dbt models. Add inline comments in SQL and YAML files where the logic is not obvious (but keep it short and meaningful). Use macros where appropriate, including a schema-routing macro so models land in their designated schemas (STAGING, INTERMEDIATE, MARTS, etc.).
+
+Environment:
+The existing Snowflake schemas and their purposes are: 
+    RAW for source tables (EMPLOYEES, DEPARTMENTS, LEAVE_EVENTS)
+    STAGING for light transformations over RAW
+    INTERMEDIATE for enrichment via joins and standardization
+    MARTS for final dimension and fact tables, SEEDS for lookup/mapping tables.
+    COMMON as the dbt project deployment target, and 
+    SNAPSHOTS reserved for future use. 
+    The source tables are: EMPLOYEES (employee master data with country and department assignments), DEPARTMENTS (department reference data with country-specific names), and LEAVE_EVENTS (leave transactions with country-specific leave codes — delta data may arrive only for this table).
+
+Architecture Requirements:
+    The architecture flows as: RAW → STAGING → INTERMEDIATE → MARTS.
+
+Transformation Requirements:
+Department names vary by country (e.g., Technik in DE = Engineering) — standardize to a common set of Engineering, Human Resources, and Finance. Leave codes vary by country (e.g., PTO in US, URLAUB in DE, PL in IN) — standardize to common types and identify whether each is paid or unpaid. Standardization mappings should use composite keys: (country_code + local department name) and (country_code + local leave code). Do not hardcode mappings in SQL — use lookup tables. All models must use source() or ref(), no direct table references. No SELECT * in any model — explicitly list columns.
+
+Consumption Layer Requirements:
+For the marts layer, use these naming conventions: dim_employee (one row per employee), dim_department (one row per country-specific department), and fct_leave (one row per leave transaction). Use dim_ prefix for dimension tables and fct_ prefix for fact tables. Use stg_ for staging and int_ for intermediate models. All names in lowercase snake_case.
+
+Extended Absence Detection:
+When an employee has overlapping or back-to-back leave entries, flag them as an extended absence in the fact table. If total consecutive days exceed a country-specific threshold (this threshold varies by country — profile the data and decide reasonable values), mark the event as a long leave requiring review. This logic should be implemented in the intermediate or marts layer using date math and window functions.
+
+Testing:
+Based on data profiling, apply all four built-in dbt test types (unique, not_null, accepted_values, relationships) across every layer where they are relevant — not just the marts layer. Add custom singular SQL tests only when a business rule cannot be expressed with built-in tests. Do not over-test; let the profiled data guide which tests are meaningful. At minimum: dim_employee.employee_id must be unique and not null, dim_department.department_id must be unique and not null, fct_leave.leave_id must be unique and not null, fct_leave.employee_id must not be null. Referential integrity: fct_leave.employee_id references dim_employee.employee_id, and dim_employee.department_id references dim_department.department_id. Data quality: leave days_taken must be greater than zero (singular test). Document all tests in schema YAML files.
+
+Documentation:
+Every column in every model must have a brief description in the schema YAML. Every model must have a model-level description that persists to Snowflake. Keep descriptions concise — one line per column is enough.
+
+Bad Records:
+Create a run-operation macro that inserts intentionally bad records into the RAW tables to exercise all four built-in test types: duplicate keys (unique), null values in required fields (not_null), values outside allowed sets (accepted_values), and orphan foreign keys (relationships). This is for testing demonstration only — the macro should be runnable on demand and the baseline data should be restorable.
+
+Semantic View:
+Create a semantic view under the consumption layer built on top of the star schema objects that can answer business user questions. Include 7 to 9 verified queries that validate data quality and cover key analytical questions (e.g., leave by region, leave by department, employee counts, paid vs unpaid breakdown, extended absence counts).
+
+Deployment:
+Deploy the dbt project natively to Snowflake under the COMMON schema. No external packages, snapshots, SCD2, or multi-environment setup. Do not modify RAW tables directly — all changes flow through dbt.
