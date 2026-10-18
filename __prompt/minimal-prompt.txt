@@ -1,0 +1,17 @@
+Objective:
+Create a dbt project on Snowflake called "Global Employee Analytics". The database EMPLOYEE_ANALYTICS_V1 already exists with schemas: RAW (source tables), STAGING, INTERMEDIATE, MARTS, SEEDS, and COMMON (dbt project target). Profile the RAW tables first to understand the data before building models.
+
+Architecture: 
+Implement standard layed architcture as per dbt guidelines.
+
+Transformation Rules:
+Department names and leave codes vary by country, standardize them using lookup tables with composite keys (country_code + local name/code), never hardcode. Delta data arrives only for LEAVE_EVENTS table.
+
+Consumption Layer Rules: 
+dim_employee (one row per employee), dim_department (one row per country-specific department), fct_leave (one row per leave transaction). Test primary keys for unique/not_null, referential integrity between fact and dimensions. Detect extended absences: flag overlapping or back-to-back leave entries per employee, and mark as long leave requiring review when consecutive days exceed a country-specific threshold (profile the data to decide reasonable values).
+
+Semantic View Requirement:
+Create a semantic view under consumption layer build on the top of star schema objects and can answer business users questions.
+
+Deployment Requirement:
+Deploy under COMMON schema. No external packages, snapshots, or SCD2.
